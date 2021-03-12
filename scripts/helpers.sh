@@ -2,7 +2,7 @@
 
 TIME_FILE="$CURRENT_DIR/../data/pom_start_time.txt"
 
-# Copied from tmux-cpu
+# Copied the following two functions from tmux-cpu. Thanks!
 get_tmux_option() {
   local option="$1"
   local default_value="$2"
@@ -12,6 +12,12 @@ get_tmux_option() {
   else
     echo "$option_value"
   fi
+}
+
+set_tmux_option() {
+  local option=$1
+  local value=$2
+  tmux set-option -gq "$option" "$value"
 }
 
 elapsed() {
