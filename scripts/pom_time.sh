@@ -4,7 +4,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TIME_FILE="$CURRENT_DIR/../data/pom_start_time.txt"
 
 source "$CURRENT_DIR/helpers.sh"
-# TODO: replace with tmux configuration
+
 WORK_TIME=$(get_tmux_option @pom_work_time 25)
 BREAK_TIME=$(get_tmux_option @pom_break_time 5)
 WORK_COLOR_FG=$(get_tmux_option @pom_work_color_fg green)
@@ -15,18 +15,13 @@ BREAK_COLOR_BG=$(get_tmux_option @pom_break_color_fg red)
 WORK_TIME_SECONDS=$(($WORK_TIME*60))
 BREAK_TIME_SECONDS=$(($BREAK_TIME*60))
 
-if [ -f "$TIME_FILE" ]; then
-	# Make the following 3 lines a function.
-	start=$(cat $TIME_FILE)
-	now=$(date +%s)
-	elapsed=$(($now-$start))
+elapsed=$(elapsed)
+if [ "$elapsed" -ne "-1" ]; then
 	if [ "$elapsed" -ge $(($WORK_TIME_SECONDS+$BREAK_TIME_SECONDS)) ]; then
 		$CURRENT_DIR/start_pom.sh
 		$CURRENT_DIR/start_pom.sh # This might be strange design where the first one stops the existing timer and the second one restarts it
 	fi
-	start=$(cat $TIME_FILE)
-	now=$(date +%s)
-	elapsed=$(($now-$start))
+	elapsed=$(elapsed)
 	if [ "$elapsed" -lt "$WORK_TIME_SECONDS" ]; then
 		seconds=$(($WORK_TIME_SECONDS - $elapsed))
 		# TODO: make the following 4 lines a function?

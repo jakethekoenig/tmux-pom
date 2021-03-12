@@ -20,5 +20,5 @@ if [ -f "$TIME_FILE" ]; then
 	# If the timer is running starting it again simply stops it. Is this the right behavior?
 else
 	echo $(date +%s) > $TIME_FILE
-	echo $(date +%s) >> $POM_LOG_FILE
+	echo $(date +%Y-%m-%d-%H:%M) >> $POM_LOG_FILE
 fi
