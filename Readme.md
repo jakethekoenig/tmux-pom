@@ -44,7 +44,7 @@ set -g status-right '#{pom_timer} #{poms_done}/#{poms_goal}'
 
 To add the timer to your status bar put `#pom_timer` in the string you use to define it. You can now start and stop your pomodoro timer with <prefix>+P.
 
-Configuration
+## Configuration
 
 The extension has the following options with given default values.
 
@@ -60,7 +60,7 @@ The extension has the following options with given default values.
 - @poms_goal "0"
 ```
 
-Logging
+## Logging
 
 The extension automatically logs the start time of your pomodoros for future self analytics. You can change the file (`@pom_start_log_file`) the times are logged to and configure how long your pomodoro has to go to count (`@pom_minimum_to_count`. 
 
