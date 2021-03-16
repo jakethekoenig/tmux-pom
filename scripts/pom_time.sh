@@ -19,10 +19,8 @@ elapsed=$(elapsed)
 if [ "$elapsed" -ne "-1" ]; then
 	if [ "$elapsed" -ge $(($WORK_TIME_SECONDS+$BREAK_TIME_SECONDS)) ]; then
 		$CURRENT_DIR/next_pom.sh
-		$CURRENT_DIR/start_pom.sh
-		$CURRENT_DIR/start_pom.sh # This might be strange design where the first one stops the existing timer and the second one restarts it
+		elapsed=$(elapsed)
 	fi
-	elapsed=$(elapsed)
 	if [ "$elapsed" -lt "$WORK_TIME_SECONDS" ]; then
 		seconds=$(($WORK_TIME_SECONDS - $elapsed))
 		# TODO: make the following 4 lines a function?
