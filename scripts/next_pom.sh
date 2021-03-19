@@ -11,7 +11,7 @@ POM_LOG_FILE=$(get_tmux_option @pom_start_log_file "$CURRENT_DIR/../data/pom_sta
 DONE=$($CURRENT_DIR/pom_done.sh)
 POM_GOAL=$(get_tmux_option @pom_consecutive_goal 0)
 if [ "$POM_GOAL" -gt "0" ]; then
-	if [ "$DONE" -gt "$POM_GOAL" ]; then
+	if [ "$DONE" -ge "$POM_GOAL" ]; then
 		rm $TIME_FILE
 		rm $COUNT_FILE
 		exit
