@@ -28,10 +28,10 @@ Then reload your tmux environment.
 
 ## Usage
 
-A pomodoro can be started or stopped with <prefix>+P. You should edit your `status-right` or `status-left` to make the timer visible. The following strings are available:
+A pomodoro can be started or stopped with `prefix+P`. You should edit your `status-right` or `status-left` to make the timer visible. The following strings are available:
 
 - `#{pom_timer}` - Counts down from `@pom_work_time` in the work time colors and then counts up to `@pom_break_time` in the break time colors.
-- `#{poms_done}` - Counts the number of pomodoro timers that have been consecutively repeated. Resets on <prefix>-P.
+- `#{poms_done}` - Counts the number of pomodoro timers that have been consecutively repeated. Resets on `prefix-P`.
 - `#{poms_goal}` - The intended number of consecutive pomodoros.
 
 If `poms_goal` is set to a positive integer then the timer will repeat for that many iterations. Otherwise it will repeat until manually stopped. 
@@ -42,7 +42,7 @@ A suggested example for adding the timer to your status bar is:
 set -g status-right '#{pom_timer} #{poms_done}/#{poms_goal}'
 ```
 
-To add the timer to your status bar put `#pom_timer` in the string you use to define it. You can now start and stop your pomodoro timer with <prefix>+P.
+To add the timer to your status bar put `#pom_timer` in the string you use to define it. You can now start and stop your pomodoro timer with `prefix+P`.
 
 ## Configuration
 
